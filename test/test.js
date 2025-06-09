@@ -1,4 +1,4 @@
-import {existsSync} from 'node:fs';
+import {existsSync, readdirSync} from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import {fileURLToPath} from 'node:url';
@@ -11,6 +11,14 @@ import compareSize from 'compare-size';
 import {readChunk} from 'read-chunk';
 import isWebp from 'is-webp';
 import bin from '../index.js';
+
+function getCurrentFilenames(dir) {
+	console.log("\nCurrent filenames:");
+	readdirSync(dir).forEach(file => {
+		console.log(file);
+	});
+	console.log("\n");
+}
 
 test('rebuild the gif2webp binaries', async t => {
 	// Skip the test on Windows
@@ -31,6 +39,7 @@ test('rebuild the gif2webp binaries', async t => {
 	console.log('make - end');
 
 	t.true(existsSync(temporary));
+	getCurrentFilenames(temporary);
 	t.true(existsSync(path.join(temporary, 'gif2webp')));
 });
 
