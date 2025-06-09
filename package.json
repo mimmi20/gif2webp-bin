@@ -57,7 +57,9 @@
   ],
   "dependencies": {
     "@localnerve/bin-build": "^7.7.0",
-    "@xhmikosr/bin-wrapper": "^13.0.5"
+    "@xhmikosr/bin-wrapper": "^13.0.5",
+    "bin-version-check": "^5.1.0",
+    "which": "^5.0.0"
   },
   "devDependencies": {
     "ava": "^6.4.0",
