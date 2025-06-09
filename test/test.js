@@ -21,10 +21,14 @@ test('rebuild the gif2webp binaries', async t => {
 
 	const temporary = temporaryDirectory();
 
+	console.log('make - start');
+
 	await binBuild.url('http://downloads.webmproject.org/releases/webp/libwebp-1.5.0.tar.gz', [
 		`mkdir -p ${temporary}`,
-		`make -f makefile.unix ./examples/gif2webp && mv ./examples/gif2webp ${path.join(temporary, 'gif2webp')}}`,
+		`make -f makefile.unix examples/gif2webp && mv ./examples/gif2webp ${path.join(temporary, 'gif2webp')}}`,
 	]);
+
+	console.log('make - end');
 
 	t.true(existsSync(temporary));
 	t.true(existsSync(path.join(temporary, 'gif2webp')));
